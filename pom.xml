@@ -9,6 +9,9 @@
   <description>
     Common cross-project/cross-platform POSIX APIs
   </description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
   <issueManagement>
     <system>JIRA</system>
