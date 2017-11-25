@@ -101,6 +101,10 @@ public final class OpenBSDHeapFileStat extends BaseHeapFileStat {
         return st_mtime.get();
     }
 
+    public long mTimeNanoSecs() {
+        return st_mtimensec.get();
+    }
+
     public int nlink() {
         return st_nlink.get();
     }

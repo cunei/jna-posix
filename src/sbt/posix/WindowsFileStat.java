@@ -61,6 +61,10 @@ public class WindowsFileStat extends BaseNativeFileStat {
         return st_mtime;
     }
 
+    public long mTimeNanoSecs() {
+        return 0L;
+    }
+
     public int nlink() {
         return st_nlink;
     }

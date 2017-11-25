@@ -65,6 +65,10 @@ public class Linux64FileStat extends BaseNativeFileStat {
         return st_mtime;
     }
 
+    public long mTimeNanoSecs() {
+        return st_mtimensec;
+    }
+
     public int nlink() {
         return (int) st_nlink;
     }

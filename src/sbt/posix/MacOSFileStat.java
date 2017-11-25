@@ -67,6 +67,10 @@ public class MacOSFileStat extends BaseNativeFileStat {
         return st_mtime;
     }
 
+    public long mTimeNanoSecs() {
+        return st_mtimensec;
+    }
+
     public int nlink() {
         return st_nlink;
     }

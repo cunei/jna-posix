@@ -80,6 +80,10 @@ public class SolarisHeapFileStat extends BaseHeapFileStat {
         return st_mtim_sec.get();
     }
 
+    public long mTimeNanoSecs() {
+        return st_mtim_nsec.get();
+    }
+
     public int nlink() {
         return st_nlink.get();
     }

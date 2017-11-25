@@ -80,6 +80,10 @@ public class SolarisFileStat extends BaseNativeFileStat {
         return st_mtim.tv_sec;
     }
 
+    public long mTimeNanoSecs() {
+        return st_mtim.tv_nsec;
+    }
+
     public int nlink() {
         return st_nlink;
     }

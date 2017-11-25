@@ -12,6 +12,7 @@ public class JavaFileStat implements FileStat {
     long st_size;
     int st_ctime;
     int st_mtime;
+    int st_mtime_nsec;
     POSIX posix;
     
     public JavaFileStat(POSIX posix, POSIXHandler handler) {
@@ -31,7 +32,9 @@ public class JavaFileStat implements FileStat {
         // Parent file last modified will only represent when something was added or removed.
         // This is not correct, but it is better than nothing and does work in one common use
         // case.
-        st_mtime = (int) (file.lastModified() / 1000);
+        long mtime = file.lastModified();
+        st_mtime = (int) (mtime / 1000);
+        st_mtime_nsec = (int) (mtime - 1000L * st_mtime);
         if (file.getParentFile() != null) {
             st_ctime = (int) (file.getParentFile().lastModified() / 1000);
         } else {
@@ -286,6 +289,10 @@ public class JavaFileStat implements FileStat {
 
     public long mtime() {
         return st_mtime;
+    }
+
+    public long mTimeNanoSecs() {
+        return st_mtime_nsec;
     }
 
     public int nlink() {

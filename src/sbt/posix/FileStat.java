@@ -61,6 +61,7 @@ public interface FileStat {
     public int minor(long dev);
     public int mode();
     public long mtime();
+    public long mTimeNanoSecs();
     public int nlink();
     public long rdev();
     /**
