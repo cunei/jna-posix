@@ -15,7 +15,7 @@ public class UTimBuf64 extends Structure {
     }
 
     @Override
-    protected List getFieldOrder() {
+    protected List<String> getFieldOrder() {
         return Arrays.asList(new String[] { "actime", "modtime" }); 
     }
 }

@@ -11,7 +11,7 @@ public class SolarisFileStat extends BaseNativeFileStat {
         public volatile int tv_nsec;
 
         @Override
-        protected List getFieldOrder() {
+        protected List<String> getFieldOrder() {
             return Arrays.asList(new String[] { "tv_sec", "tv_nsec" });
         }
     }
@@ -97,7 +97,7 @@ public class SolarisFileStat extends BaseNativeFileStat {
     }
 
     @Override
-    protected List getFieldOrder() {
+    protected List<String> getFieldOrder() {
         return Arrays.asList(new String[] { 
             "st_dev", "st_pad1", "st_ino", "st_mode", "st_nlink", "st_uid",
             "st_gid", "st_rdev", "st_pad2", "st_size", "st_pad3", "st_atim",

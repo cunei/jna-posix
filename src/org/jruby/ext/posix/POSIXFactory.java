@@ -5,13 +5,12 @@ import java.util.HashMap;
 import org.jruby.ext.posix.util.Platform;
 import com.sun.jna.Native;
 import java.util.Map;
+import java.util.Collections;
 
 public class POSIXFactory {
     static final String LIBC = Platform.IS_LINUX ? "libc.so.6" : "c";
     static LibC libc = null;
-    static final Map<Object, Object> defaultOptions = new HashMap<Object, Object>() {{
-        put(Library.OPTION_TYPE_MAPPER, POSIXTypeMapper.INSTANCE);
-    }};
+    static final Map<String, ?> defaultOptions = Collections.singletonMap(Library.OPTION_TYPE_MAPPER, POSIXTypeMapper.INSTANCE);
 
     public static POSIX getPOSIX(POSIXHandler handler, boolean useNativePOSIX) {
         POSIX posix = null;
@@ -84,13 +83,12 @@ public class POSIXFactory {
     public static POSIX loadWindowsPOSIX(POSIXHandler handler) {
         String name = "msvcrt";
 
-        Map<Object, Object> options = new HashMap<Object, Object>();
-        options.put(com.sun.jna.Library.OPTION_FUNCTION_MAPPER, new WindowsLibCFunctionMapper());
+        Map<String, ?> options = Collections.singletonMap(com.sun.jna.Library.OPTION_FUNCTION_MAPPER, new WindowsLibCFunctionMapper());
 
         return new WindowsPOSIX(name, loadLibC(name, WindowsLibC.class, options), handler);
     }
 
-    public static LibC loadLibC(String libraryName, Class<?> libCClass, Map<Object, Object> options) {
+    public static LibC loadLibC(String libraryName, Class<?> libCClass, Map<String, ?> options) {
         if (libc != null) return libc;
 
         libc = (LibC) Native.loadLibrary(libraryName, libCClass, options);
