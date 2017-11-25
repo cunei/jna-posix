@@ -40,7 +40,7 @@ public class GroupTest {
     // @Test
     // public void hello() {}
     @Test public void getgrnam() {
-        final String LOGIN = "nobody";
+        final String LOGIN = "daemon";
         Group grp = posix.getgrnam(LOGIN);
         assertNotNull(grp);
         assertEquals("Login name not equal", LOGIN, grp.getName());
